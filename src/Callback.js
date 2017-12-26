@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { setIdToken, setAccessToken, getIdToken } from './Services/AuthService';
+// import { setIdToken, setAccessToken, getIdToken } from './Services/AuthService';
 import jwt from 'jsonwebtoken';
 
 class Callback extends Component {
@@ -9,12 +9,12 @@ class Callback extends Component {
     }
 
     componentDidMount() {
-        setAccessToken();
-        setIdToken();
-
-        let idToken = getIdToken();
-        let decode = jwt.decode(idToken);
-        console.log(decode.sub);
+        // setAccessToken();
+        // setIdToken();
+        //
+        // let idToken = getIdToken();
+        // let decode = jwt.decode(idToken);
+        // console.log(decode.sub);
     }
 
     render() {
