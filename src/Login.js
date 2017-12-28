@@ -12,7 +12,7 @@ class Login extends Component {
 
     render() {
         return(
-            <button onClick={() => this.login()}>Login</button>
+            <button onClick={() => this.login()}></button>
         )
     }
 }

@@ -1,0 +1,25 @@
+.Transactions {
+    margin-top: 180px;
+}
+
+.transaction-item {
+    background: rgba(97, 174, 161, 0.9);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 20px;
+    height: 140px;
+    margin-bottom: 20px;
+}
+
+.transaction-item .date{
+   font-size: 20px;
+}
+
+.transaction-item .icon span{
+    font-size: 50px;
+    margin-left: 5%;
+}
+
+.transaction-item .amount{
+    font-size: 60px;
+}
