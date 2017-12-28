@@ -1,0 +1,9 @@
+.Register {
+    position: relative;
+    top: 100px;
+}
+
+.register-form {
+    background: rgba(97, 174, 161, 0.7);
+    border-radius: 20px;
+}

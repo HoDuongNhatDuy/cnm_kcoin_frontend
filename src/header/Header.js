@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route} from "react-router-dom";
 import {connect} from 'react-redux'
+import { browserHistory } from 'react-router-dom'
 import './Header.css';
 
 class Header extends Component {
@@ -12,7 +12,7 @@ class Header extends Component {
                 <div className="col-sm-3 text-center pointer button">
                     <span className="glyphicon glyphicon-plus-sign"></span> New Transaction
                 </div>
-                <div className="col-sm-2 text-right pointer button"> <span className="glyphicon glyphicon-log-out"></span> Logout</div>
+                <div className="col-sm-2 text-right pointer button" onClick={() => this.logout()}> <span className="glyphicon glyphicon-log-out"></span> Logout</div>
             </div>
         )
     }
@@ -27,6 +27,12 @@ class Header extends Component {
             default:
                 return this.renderDashboardHeader();
         }
+    }
+
+    logout() {
+        // browserHistory.push('login');
+        this.context.router.push('/login');
+        // this.props.history.push('/login');
     }
 
     render() {
