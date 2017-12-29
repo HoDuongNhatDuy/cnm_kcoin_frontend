@@ -1,15 +1,24 @@
 .Balance {
-    height: 350px;
+    height: 250px;
+    width: 100%;
 }
 
-.available-balance .amount{
-    font-size: 150px;
-    color: #8bbfff;
+.amount{
+    text-align: left;
+    font-size: 140px;
+    font-weight: 100;
+    color: white;
+    opacity: 0.3;
 }
 
-.available-balance .description{
+.description{
+    text-align: left;
     font-size: 30px;
-    color: #c7dfff;
+    font-weight: 700;
+    color: white;
+    margin-left: 20px;
+    margin-top: -40px;
+    opacity: 0.6;
 }
 
 .available-balance {

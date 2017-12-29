@@ -7,12 +7,12 @@ class Balance extends Component {
     render() {
         return (
             <div className="Balance">
-                <div className="col-sm-6 text-center available-balance pointer">
+                <div className="col-sm-offset-1 col-sm-5 text-center pointer">
                     <div className="amount">{this.props.available_balance}</div>
                     <div className="description">AVAILABLE BALANCE</div>
                 </div>
 
-                <div className="col-sm-6 text-center available-balance pointer">
+                <div className="col-sm-5 text-center pointer">
                     <div className="amount">{this.props.actual_balance}</div>
                     <div className="description">ACTUAL BALANCE</div>
                 </div>
