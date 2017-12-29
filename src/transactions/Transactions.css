@@ -6,9 +6,9 @@
     background: rgba(255, 255, 255, 0.5);
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    border-radius: 16px;
+    border-radius: 10px;
     height: 140px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .transaction-item .date{
