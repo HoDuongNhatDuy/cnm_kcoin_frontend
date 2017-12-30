@@ -14,4 +14,13 @@ const UpdatePersonalData = function (dispatch, email, address) {
     dispatch(Actions.UpdatePersonalData(email, address));
 };
 
-export default {ShowSnackBar, UpdatePersonalData}
+/**
+ * @return {string}
+ */
+const GetCurrentHostURL = function () {
+    let url = window.location.href;
+    let arr = url.split("/");
+    return arr[0] + "//" + arr[2];
+};
+
+export default {ShowSnackBar, UpdatePersonalData, GetCurrentHostURL}

@@ -7,6 +7,7 @@ import Reducer from './Reducer'
 import Dashboard from "./dashboard/Dashboard";
 import Login from "./login/Login";
 import Register from "./register/Register";
+import AccountActiveRedirect from "./register/AccountActiveRedirect";
 
 const store = createStore(Reducer, compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -23,6 +24,7 @@ class App extends Component {
                           <Route exact path="/" component={Dashboard}></Route>
                           <Route exact path="/login" component={Login}></Route>
                           <Route exact path="/register" component={Register}></Route>
+                          <Route path="/account-activate-redirect" component={AccountActiveRedirect}></Route>
                       </div>
                   </BrowserRouter>
               </div>
