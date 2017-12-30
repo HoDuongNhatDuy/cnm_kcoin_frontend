@@ -5,6 +5,7 @@ import UtilService from "../UtilService";
 import $ from 'jquery'
 import CONFIGS from "../Configs";
 import './Register.css';
+import {IsLoggedIn} from "../AuthService";
 
 class Register extends Component {
 
@@ -82,6 +83,13 @@ class Register extends Component {
 
         UtilService.ShowSnackBar("An email has been sent!");
         this.props.history.push('/login');
+    }
+
+    componentDidMount() {
+        if (IsLoggedIn()) {
+            UtilService.ShowSnackBar("Please logout first");
+            this.props.history.push('/');
+        }
     }
 
     render() {

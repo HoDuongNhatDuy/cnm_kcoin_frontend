@@ -23,7 +23,7 @@ class Dashboard extends Component {
 
         return (
             <div className="Dashboard">
-                <Header type="dashboard"></Header>
+                <Header type="dashboard" history={this.props.history}></Header>
                 <Balance></Balance>
                 <Transactions></Transactions>
             </div>

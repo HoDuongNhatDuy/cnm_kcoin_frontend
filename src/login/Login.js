@@ -5,7 +5,7 @@ import './Login.css';
 import $ from 'jquery'
 import CONFIGS from "../Configs";
 import UtilService from "../UtilService";
-import { SetAuthInfo } from "../AuthService";
+import { SetAuthInfo, IsLoggedIn } from "../AuthService";
 
 class Login extends Component {
     login() {
@@ -25,6 +25,13 @@ class Login extends Component {
                 UtilService.ShowSnackBar(response.message);
             }
         });
+    }
+
+    componentDidMount() {
+        if (IsLoggedIn()) {
+            UtilService.ShowSnackBar("Please logout first");
+            this.props.history.push('/');
+        }
     }
 
     render() {

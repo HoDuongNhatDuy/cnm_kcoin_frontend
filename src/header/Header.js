@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import { browserHistory } from 'react-router-dom'
 import './Header.css';
+import {Logout} from "../AuthService";
 
 class Header extends Component {
 
@@ -31,9 +32,7 @@ class Header extends Component {
     }
 
     logout() {
-        // browserHistory.push('login');
-        this.context.router.push('/login');
-        // this.props.history.push('/login');
+        Logout(this.props.history, "Logout successfully");
     }
 
     render() {

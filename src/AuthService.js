@@ -1,9 +1,13 @@
 import CONFIGS from './Configs';
 import UtilService from "./UtilService";
 
-export function Logout(history) {
+export function Logout(history, message = null) {
     ClearAccessToken();
-    UtilService.ShowSnackBar('Your session has been expired. Please login again!');
+    if (!message) {
+        message = 'Your session has been expired. Please login again!';
+    }
+
+    UtilService.ShowSnackBar(message);
     history.push('/login');
 }
 
