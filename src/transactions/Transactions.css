@@ -23,3 +23,11 @@
 .transaction-item .amount{
     font-size: 60px;
 }
+
+.transaction-item .address,
+.transaction-item .amount,
+.transaction-item .icon span,
+.transaction-item .date
+{
+    margin: 0px;
+}
