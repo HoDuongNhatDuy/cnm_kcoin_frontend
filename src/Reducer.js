@@ -1,5 +1,5 @@
 let default_state = {
-    email: 'duyho@mailinator.com',
+    email: '123@mailinator.com',
     currentAddress: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     available_balance: 15000,
     actual_balance: 10000,
@@ -27,8 +27,11 @@ let default_state = {
 
 export default (state = default_state, action) => {
     switch (action.type) {
-        case 'UPDATE_TRANSACTIONS':
-            return {...state};
+        case 'UPDATE_PERSONAL_DATA':
+            let data = action.data;
+            let email = data.email;
+            let currentAddress = data.address;
+            return {...state, email, currentAddress};
         default:
             return {...state}
     }

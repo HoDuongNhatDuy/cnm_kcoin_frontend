@@ -3,32 +3,28 @@ import {NavLink} from "react-router-dom";
 import {connect} from 'react-redux'
 import './Login.css';
 import $ from 'jquery'
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
+import CONFIGS from "../Configs";
+import UtilService from "../UtilService";
+import { SetAuthInfo } from "../AuthService";
 
 class Login extends Component {
-
     login() {
-        let url = "login API URL here";
+        let thisComponentObj = this;
+        let url = CONFIGS.BACKEND_API_URL + '/api/login';
         // Will implement validation here later
         let data = {
             email: this.refs.email.value,
             password: this.refs.password.value
         };
         $.post(url, data, function (response) {
-            if (response.status === 200) {
-                cookies.set(
-                    'access_token', 
-                    response.data.access_token, 
-                    {path: '/', expires: response.data.expired_at}
-                );
-                
-                this.props.history.push('/');
+            if (response.status === 1) {
+                SetAuthInfo(response.data.access_token, response.data.expired_at, response.data.email, response.data.address);
+                thisComponentObj.props.history.push('/');
             }
             else {
-                // API didn't respond. Error message goes here
+                UtilService.ShowSnackBar(response.message);
             }
-})
+        });
     }
 
     render() {
@@ -53,7 +49,8 @@ class Login extends Component {
                     <div className="form-group">
                         <div className="col-sm-offset-5 col-sm-1">
                             <NavLink to="/register">Register</NavLink>
-                            <button type="button" onClick={() => this.login()} className="btn btn-default">Log in</button>
+                            <button type="button" onClick={() => this.login()} className="btn btn-default">Log in
+                            </button>
                         </div>
                     </div>
                 </div>

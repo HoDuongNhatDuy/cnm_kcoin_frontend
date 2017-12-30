@@ -1,5 +1,5 @@
 module.exports = {
-    BACKEND_API: '',
+    BACKEND_API_URL: 'http://localhost:3000',
     // AUTH0: {
     //     DOMAIN: "duyho.auth0.com",
     //     CLIENT_ID: "SljoMQlqA5GdS5w4Cj19uY6tF3Q46RLk",
