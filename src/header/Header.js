@@ -11,10 +11,12 @@ class Header extends Component {
             <div className="header-bar clearfix">
                 <div className="col-sm-offset-1 col-sm-4 pointer">Hello, <strong>{this.props.email}</strong></div>
                 <div className="col-sm-2"></div>
-                <div className="col-sm-2 text-right pointer button">
-                    <span className="glyphicon glyphicon-plus-sign"></span> NEW TRANSACTION
+                <div className="header-col col-sm-2 text-right">
+                    <div className="pointer button"><span className="glyphicon glyphicon-plus-sign"></span> NEW TRANSACTION</div>
                 </div>
-                <div className="header-item col-sm-2 text-right pointer button" onClick={() => this.logout()}> <span className="glyphicon glyphicon-log-out"></span> LOG OUT</div>
+                <div className="header-col col-sm-2 text-right">
+                    <div className="pointer button" onClick={() => this.logout()}> <span className="glyphicon glyphicon-log-out"></span> LOG OUT</div>
+                </div>
             </div>
         )
     }

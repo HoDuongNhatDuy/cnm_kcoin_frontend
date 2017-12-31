@@ -1,23 +1,27 @@
 * {
-    font-size: large;
+    font-size: medium;
     margin-top: 0px;
-    margin-bottom: 30px;
     color: white;
+    margin-bottom: 15px;
 }
 
 .header-bar {
-    padding-top: 40px;
+    padding-top: 30px;
     padding-bottom: 0px;
     background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.header-item {
+.header-col {
     padding: 0px;
+    height: 100%;
 }
 
 .button {
+    height: 100%;
     font-weight: 500;
     opacity: 0.7;
+    display: inline-block;
 }
 
 .button:hover {
