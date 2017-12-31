@@ -1,4 +1,6 @@
 import Actions from './Actions';
+import $ from 'jquery'
+import CONFIGS from "./Configs";
 
 const ShowSnackBar = function (text, type = "normal") {
     let x       = document.getElementById("snackbar");
@@ -23,4 +25,26 @@ const GetCurrentHostURL = function () {
     return arr[0] + "//" + arr[2];
 };
 
-export default {ShowSnackBar, UpdatePersonalData, GetCurrentHostURL}
+function sendGetDashboardDataRequest(address) {
+    return new Promise(resolve => {
+        let url  = CONFIGS.BACKEND_API_URL + `/api/get-dashboard-info/${address}`;
+        $.get(url, function (response) {
+            if (response.status === 0) {
+                ShowSnackBar(response.message);
+                resolve(false);
+                return;
+            }
+            resolve(response.data);
+        }, 'json');
+    });
+}
+
+const UpdateDashboardData = async function (dispatch, address) {
+    let sendRequestResult = await sendGetDashboardDataRequest(address);
+    if (!sendRequestResult)
+        return;
+
+    dispatch(Actions.UpdateDashboardData(sendRequestResult.available, sendRequestResult.actual, sendRequestResult.transactions));
+};
+
+export default {ShowSnackBar, UpdatePersonalData, GetCurrentHostURL, UpdateDashboardData}

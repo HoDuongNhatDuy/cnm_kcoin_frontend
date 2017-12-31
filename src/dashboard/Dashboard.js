@@ -14,10 +14,7 @@ class Dashboard extends Component {
         }
 
         UtilService.UpdatePersonalData(this.props.dispatch, GetEmail(), GetAddress());
-
-        // TODO get and update balance
-        // TODO get and update transactions
-
+        UtilService.UpdateDashboardData(this.props.dispatch, GetAddress());
     }
     render() {
 

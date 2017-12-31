@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import { browserHistory } from 'react-router-dom'
 import './Header.css';
 import {Logout} from "../AuthService";
+import {Modal} from 'react-bootstrap';
+import AddTransactionModal from '../add_transaction_modal/AddTransactionModel';
 
 class Header extends Component {
 
@@ -12,7 +14,7 @@ class Header extends Component {
                 <div className="col-sm-offset-1 col-sm-4 pointer">Hello, <strong>{this.props.email}</strong></div>
                 <div className="col-sm-2"></div>
                 <div className="header-col col-sm-2 text-right">
-                    <div className="pointer button"><span className="glyphicon glyphicon-plus-sign"></span> NEW TRANSACTION</div>
+                    <AddTransactionModal></AddTransactionModal>
                 </div>
                 <div className="header-col col-sm-2 text-right">
                     <div className="pointer button" onClick={() => this.logout()}> <span className="glyphicon glyphicon-log-out"></span> LOG OUT</div>

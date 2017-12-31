@@ -3,4 +3,9 @@ const UpdatePersonalData = (email, currentAddress) => ({
     data: {email, currentAddress}
 });
 
-export default {UpdatePersonalData}
+const UpdateDashboardData = (available_balance, actual_balance, transactions) => ({
+    type: 'UPDATE_DASHBOARD_DATA',
+    data: {available_balance, actual_balance, transactions}
+});
+
+export default {UpdatePersonalData, UpdateDashboardData}

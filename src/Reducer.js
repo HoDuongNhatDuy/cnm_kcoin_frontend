@@ -1,37 +1,23 @@
 let default_state = {
-    email: '123@mailinator.com',
-    currentAddress: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-    available_balance: 15000,
-    actual_balance: 10000,
-    transactions: [
-        {
-            created_at: '2017-12-11',
-            from: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            amount: 120,
-            to: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
-        },
-        {
-            created_at: '2017-11-11',
-            from: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            amount: 180,
-            to: 'ccccccccccccccccccccccccccc'
-        },
-        {
-            created_at: '2017-11-10',
-            from: 'fffffffffffffffffffffffffffff',
-            amount: 180,
-            to: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        },
-    ]
+    email: '',
+    available_balance: 0,
+    actual_balance: 0,
+    transactions: []
 };
 
 export default (state = default_state, action) => {
+    let data = action.data;
+
     switch (action.type) {
         case 'UPDATE_PERSONAL_DATA':
-            let data = action.data;
             let email = data.email;
             let currentAddress = data.address;
             return {...state, email, currentAddress};
+        case 'UPDATE_DASHBOARD_DATA':
+            let available_balance = data.available_balance;
+            let actual_balance = data.actual_balance;
+            let transactions = data.transactions;
+            return {...state, available_balance, actual_balance, transactions};
         default:
             return {...state}
     }

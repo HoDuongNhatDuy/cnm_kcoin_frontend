@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import './Balance.css';
+import {GetAddress} from "../AuthService";
 
 class Balance extends Component {
 
     render() {
         return (
             <div className="Balance">
-                <div className="row">
+                <div className="">
                     <div className="col-sm-1"></div>
                     <div className="col-sm-5 text-center balance-element pointer">
                         <div className="amount">{this.props.available_balance}</div>
@@ -20,10 +21,10 @@ class Balance extends Component {
                     </div>
                 </div>
             
-                <div className="row">
+                <div className="">
                     <div className="col-sm-1"></div>
                     <div className="col-sm-5 text-center pointer">
-                        <div className="address">Your kcoin address: {this.props.currentAddress}</div>
+                        <div className="address">Your kcoin address: {GetAddress()}</div>
                     </div>
                 </div>
             </div>
