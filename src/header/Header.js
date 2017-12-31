@@ -32,7 +32,7 @@ class Header extends Component {
     }
 
     logout() {
-        Logout(this.props.history, "Logout successfully");
+        Logout(this.props.history, "You have been logged out successfully.");
     }
 
     render() {

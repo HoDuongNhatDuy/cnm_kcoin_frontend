@@ -29,7 +29,7 @@ class Login extends Component {
 
     componentDidMount() {
         if (IsLoggedIn()) {
-            UtilService.ShowSnackBar("Please logout first");
+            UtilService.ShowSnackBar("Please log out first!");
             this.props.history.push('/');
         }
     }
@@ -40,23 +40,25 @@ class Login extends Component {
                 <div className="col-sm-3"></div>
                 <div className="login-form form-horizontal col-sm-6">
                     <h2 className="text-center">Login</h2>
+                    <hr className="separator"/>
                     <div className="form-group">
                         <label className="control-label col-sm-3" htmlFor="email">Email address</label>
                         <div className="col-sm-8">
-                            <input type="email" className="form-control" ref="email" id="email" placeholder="Enter email"/>
+                            <input type="email" className="form-control textbox" ref="email" id="email" placeholder="Enter email"/>
                         </div>
                     </div>
                     <div className="form-group">
                         <label className="control-label col-sm-3" htmlFor="pwd">Password</label>
                         <div className="col-sm-8">
-                            <input type="password" className="form-control" ref="password" id="pwd" placeholder="Enter password"/>
+                            <input type="password" className="form-control textbox" ref="password" id="pwd" placeholder="Enter password"/>
                         </div>
                     </div>
 
                     <div className="form-group">
-                        <div className="col-sm-offset-5 col-sm-1">
-                            <NavLink to="/register">Register</NavLink>
-                            <button type="button" onClick={() => this.login()} className="btn btn-default">Log in
+                        <div className="col-sm-offset-3 col-sm-8">
+                            <NavLink className="navlink" to="/register">Don't have an account? Register</NavLink>
+                            <button type="button" onClick={() => this.login()} className="btn btn-default">
+                                LOG IN
                             </button>
                         </div>
                     </div>

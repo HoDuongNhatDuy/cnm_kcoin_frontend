@@ -15,12 +15,12 @@ class Register extends Component {
         let confirm  = this.refs.password_confirm.value;
 
         if (!email || !password || !confirm){
-            UtilService.ShowSnackBar("Invalid data");
+            UtilService.ShowSnackBar("Please fill out all the fields!");
             return false;
         }
 
         if (password !== confirm){
-            UtilService.ShowSnackBar("Password confirm does not match");
+            UtilService.ShowSnackBar("Password and confirmation do not match!");
             return false;
         }
 
@@ -76,18 +76,18 @@ class Register extends Component {
         if (!registerResult)
             return;
 
-        UtilService.ShowSnackBar("Sending email");
+        UtilService.ShowSnackBar("Sending activation email...");
         let sendEmailResult = await this.callSendActivateEmailAPI(email);
         if (!sendEmailResult)
             return;
 
-        UtilService.ShowSnackBar("An email has been sent!");
+        UtilService.ShowSnackBar("Activation email has been sent!");
         this.props.history.push('/login');
     }
 
     componentDidMount() {
         if (IsLoggedIn()) {
-            UtilService.ShowSnackBar("Please logout first");
+            UtilService.ShowSnackBar("Please logout first!");
             this.props.history.push('/');
         }
     }
@@ -97,30 +97,31 @@ class Register extends Component {
             <div className="Register">
                 <div className="col-sm-3"></div>
                 <div className="register-form form-horizontal col-sm-6">
-                    <h2 className="text-center">Register</h2>
+                    <h2 className="text-center">Register account</h2>
+                    <hr className="separator"/>
                     <div className="form-group">
                         <label className="control-label col-sm-3" htmlFor="email">Email</label>
                         <div className="col-sm-8">
-                            <input type="email" className="form-control" ref="email" id="email" placeholder="Enter email"/>
+                            <input type="email" className="form-control textbox" ref="email" id="email" placeholder="Enter email"/>
                         </div>
                     </div>
                     <div className="form-group">
                         <label className="control-label col-sm-3" htmlFor="pwd">Password</label>
                         <div className="col-sm-8">
-                            <input type="password" className="form-control" ref="password" id="pwd" placeholder="Enter password"/>
+                            <input type="password" className="form-control textbox" ref="password" id="pwd" placeholder="Enter password"/>
                         </div>
                     </div>
                     <div className="form-group">
                         <label className="control-label col-sm-3" htmlFor="confirm">Confirm</label>
                         <div className="col-sm-8">
-                            <input type="password" className="form-control" ref="password_confirm" id="confirm" placeholder="Confirm password"/>
+                            <input type="password" className="form-control textbox" ref="password_confirm" id="confirm" placeholder="Confirm password"/>
                         </div>
                     </div>
 
                     <div className="form-group">
-                        <div className="col-sm-offset-5 col-sm-1">
-                            <NavLink to="/login">Login</NavLink>
-                            <button type="button" onClick={() => this.register()} className="btn btn-default">Register</button>
+                        <div className="col-sm-offset-3 col-sm-8">
+                            <NavLink className="navlink" to="/login">Already have an account? Click here to login</NavLink>
+                            <button type="button" onClick={() => this.register()} className="btn btn-default">REGISTER</button>
                         </div>
                     </div>
                 </div>

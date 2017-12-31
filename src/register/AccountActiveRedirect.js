@@ -32,7 +32,7 @@ class AccountActiveRedirect extends Component {
         let activateResult = await this.callActivateAPI(userId);
 
         if (activateResult) {
-            UtilService.ShowSnackBar('Your account has been activated');
+            UtilService.ShowSnackBar('Your account has been activated.');
         }
 
         this.props.history.push('/login');

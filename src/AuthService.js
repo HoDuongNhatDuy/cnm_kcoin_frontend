@@ -4,7 +4,7 @@ import UtilService from "./UtilService";
 export function Logout(history, message = null) {
     ClearAccessToken();
     if (!message) {
-        message = 'Your session has been expired. Please login again!';
+        message = 'Your session has expired. Please login again!';
     }
 
     UtilService.ShowSnackBar(message);
