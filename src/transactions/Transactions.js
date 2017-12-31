@@ -9,13 +9,13 @@ class Transactions extends Component {
             let type = transaction.to === currentArr ? 'in' : 'out';
             return (
                 <div key={'transaction-' + index} className="transaction-item">
-                    <div className="col-sm-4">
+                    <div className="col-sm-3">
                         <div className="date">{transaction.created_at}</div>
                         <div className="icon">
                             <span className={type === 'in' ? 'glyphicon glyphicon-circle-arrow-down' : 'glyphicon glyphicon-circle-arrow-up'}></span>
                         </div>
                     </div>
-                    <div className="col-sm-6">
+                    <div className="col-sm-7">
                         <div className="amount">{transaction.amount}</div>
                         <div className="address">
                             {type === 'in' ? ('from ' + transaction.from) : ('to ' + transaction.to)}
