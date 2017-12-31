@@ -2,7 +2,13 @@ let default_state = {
     email: '',
     available_balance: 0,
     actual_balance: 0,
-    transactions: []
+    transactions: [],
+    createTransactionState: {
+        showNewTransactionModal: false,
+        show2FAModal: false,
+        transactionId: null,
+
+    }
 };
 
 export default (state = default_state, action) => {
@@ -18,6 +24,9 @@ export default (state = default_state, action) => {
             let actual_balance = data.actual_balance;
             let transactions = data.transactions;
             return {...state, available_balance, actual_balance, transactions};
+        case 'UPDATE_CREATE_TRANSACTION_STATE':
+            let createTransactionState = data.createTransactionState;
+            return {...state, createTransactionState};
         default:
             return {...state}
     }

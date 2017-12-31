@@ -47,4 +47,8 @@ const UpdateDashboardData = async function (dispatch, address) {
     dispatch(Actions.UpdateDashboardData(sendRequestResult.available, sendRequestResult.actual, sendRequestResult.transactions));
 };
 
-export default {ShowSnackBar, UpdatePersonalData, GetCurrentHostURL, UpdateDashboardData}
+const UpdateCreateTransactionState = async function (dispatch, createTransactionState) {
+    dispatch(Actions.UpdateCreateTransactionState(createTransactionState));
+};
+
+export default {ShowSnackBar, UpdatePersonalData, GetCurrentHostURL, UpdateDashboardData, UpdateCreateTransactionState}

@@ -8,21 +8,14 @@ import CONFIGS from "../Configs";
 import {GetAddress} from "../AuthService";
 
 class AddTransactionModel extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showNewTransactionModal: false,
-            show2FAModal: false,
-            transactionId: null
-        };
-    }
-
     openNewTransactionModal() {
-        this.setState({showNewTransactionModal: true});
+        UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, showNewTransactionModal: true})
     }
 
     closeNewTransactionModal() {
-        this.setState({showNewTransactionModal: false});
+        UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, showNewTransactionModal: false})
+        UtilService.UpdateDashboardData(this.props.dispatch, GetAddress());
+
     }
 
     createTransactionValidation() {
@@ -94,11 +87,11 @@ class AddTransactionModel extends Component {
 
     open2FAModal() {
         this.closeNewTransactionModal();
-        this.setState({show2FAModal: true});
+        UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, show2FAModal: true})
     }
 
     close2FAModal() {
-        this.setState({show2FAModal: false});
+        UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, show2FAModal: false})
     }
 
     send2FARequest() {
@@ -135,7 +128,7 @@ class AddTransactionModel extends Component {
                 <div className="pointer button" onClick={() => this.openNewTransactionModal()}>
                     <span className="glyphicon glyphicon-plus-sign"></span> NEW TRANSACTION
                 </div>
-                <Modal show={this.state.showNewTransactionModal} onHide={() => this.closeNewTransactionModal()}>
+                <Modal show={this.props.createTransactionState.showNewTransactionModal} onHide={() => this.closeNewTransactionModal()}>
                     <Modal.Header closeButton>
                         <Modal.Title>New transaction</Modal.Title>
                     </Modal.Header>
@@ -165,7 +158,7 @@ class AddTransactionModel extends Component {
                     </Modal.Footer>
                 </Modal>
 
-                <Modal show={this.state.show2FAModal} onHide={() => this.close2FAModal()}>
+                <Modal show={this.props.createTransactionState.show2FAModal} onHide={() => this.close2FAModal()}>
                     <Modal.Header closeButton>
                         <Modal.Title>2FA</Modal.Title>
                     </Modal.Header>

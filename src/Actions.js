@@ -8,4 +8,10 @@ const UpdateDashboardData = (available_balance, actual_balance, transactions) =>
     data: {available_balance, actual_balance, transactions}
 });
 
-export default {UpdatePersonalData, UpdateDashboardData}
+const UpdateCreateTransactionState = (createTransactionState) => ({
+    type: 'UPDATE_CREATE_TRANSACTION_STATE',
+    data: {createTransactionState}
+});
+
+
+export default {UpdatePersonalData, UpdateDashboardData, UpdateCreateTransactionState}
