@@ -6,10 +6,9 @@
     opacity: 0.8;
     -webkit-transition: transform 0.1s ease-in-out;
     transition: transform 0.1s ease-in-out;
+    border-bottom: 3px solid rgba(255, 255, 255, 0);
 }
 
 .button:hover {
-    opacity: 1;
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
+    border-bottom: 3px solid #F44336;
 }
