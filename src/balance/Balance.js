@@ -7,15 +7,24 @@ class Balance extends Component {
     render() {
         return (
             <div className="Balance">
-                <div className="col-sm-1"></div>
-                <div className="col-sm-5 text-center balance-element pointer">
-                    <div className="amount">{this.props.available_balance}</div>
-                    <div className="description">AVAILABLE BALANCE</div>
-                </div>
+                <div className="row">
+                    <div className="col-sm-1"></div>
+                    <div className="col-sm-5 text-center balance-element pointer">
+                        <div className="amount">{this.props.available_balance}</div>
+                        <div className="description">AVAILABLE BALANCE</div>
+                    </div>
 
-                <div className="col-sm-5 text-center balance-element pull-right pointer">
-                    <div className="amount">{this.props.actual_balance}</div>
-                    <div className="description">ACTUAL BALANCE</div>
+                    <div className="col-sm-5 text-center balance-element pull-right pointer">
+                        <div className="amount">{this.props.actual_balance}</div>
+                        <div className="description">ACTUAL BALANCE</div>
+                    </div>
+                </div>
+            
+                <div className="row">
+                    <div className="col-sm-1"></div>
+                    <div className="col-sm-5 text-center pointer">
+                        <div className="address">Your kcoin address: {this.props.currentAddress}</div>
+                    </div>
                 </div>
             </div>
         );

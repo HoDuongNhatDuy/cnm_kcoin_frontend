@@ -20,3 +20,11 @@
     margin-top: -40px;
     opacity: 0.6;
 }
+
+.address {
+    margin-left: 20px;
+    margin-top: 20px;
+    text-align: left;
+    font-weight: 300;
+    font-size: large;
+}
