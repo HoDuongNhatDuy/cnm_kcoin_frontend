@@ -43,7 +43,7 @@ class Transactions extends Component {
             <div>
                 <ButtonGroup className="actions">
                     <button className="actionbtn" title="Re-send confirmation email" onClick={() => this.resendConfirmationEmail(transactionId)}><span className="glyphicon glyphicon-envelope"></span></button>
-                    <button className="actionbtn" title="Confirm again" onClick={() => this.reConfirm(transactionId)}><span className="glyphicon glyphicon-repeat"></span></button>
+                    <button className="actionbtn" title="Confirm transaction" onClick={() => this.reConfirm(transactionId)}><span className="glyphicon glyphicon-check"></span></button>
                     <button className="actionbtn" title="Delete transaction" onClick={() => this.deleteTransaction(transactionId)}><span className="glyphicon glyphicon glyphicon-trash"></span></button>
                 </ButtonGroup>
             </div>
