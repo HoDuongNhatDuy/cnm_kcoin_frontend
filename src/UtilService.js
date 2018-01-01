@@ -51,4 +51,45 @@ const UpdateCreateTransactionState = async function (dispatch, createTransaction
     dispatch(Actions.UpdateCreateTransactionState(createTransactionState));
 };
 
-export default {ShowSnackBar, UpdatePersonalData, GetCurrentHostURL, UpdateDashboardData, UpdateCreateTransactionState}
+const SendSendCreateTransactionConfirmationEmail = function(transactionId) {
+    return new Promise(resolve => {
+        let url  = CONFIGS.BACKEND_API_URL + `/api/send-create-transaction-confirmation-email/${transactionId}`;
+        $.get(url, function (response) {
+            if (response.status === 0) {
+                ShowSnackBar(response.message);
+                resolve(false);
+                return;
+            }
+            resolve(true);
+        }, 'json');
+    });
+};
+
+const Send2FARequest = function(transactionId, code) {
+    return new Promise(resolve => {
+        let url  = CONFIGS.BACKEND_API_URL + `/api/confirm-transaction`;
+        let data = {
+            transaction_id: transactionId,
+            code: code
+        };
+        $.post(url, data, function (response) {
+            ShowSnackBar(response.message);
+
+            if (response.status === 0) {
+                resolve(false);
+                return;
+            }
+            resolve(true);
+        }, 'json');
+    });
+};
+
+export default {
+    ShowSnackBar,
+    UpdatePersonalData,
+    GetCurrentHostURL,
+    UpdateDashboardData,
+    UpdateCreateTransactionState,
+    SendSendCreateTransactionConfirmationEmail,
+    Send2FARequest
+}

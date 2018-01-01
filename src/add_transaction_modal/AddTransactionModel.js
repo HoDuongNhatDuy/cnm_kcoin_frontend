@@ -52,20 +52,6 @@ class AddTransactionModel extends Component {
         });
     }
 
-    sendSendCreateTransactionConfirmationEmail(transactionId) {
-        return new Promise(resolve => {
-            let url  = CONFIGS.BACKEND_API_URL + `/api/send-create-transaction-confirmation-email/${transactionId}`;
-            $.get(url, function (response) {
-                if (response.status === 0) {
-                    UtilService.ShowSnackBar(response.message);
-                    resolve(false);
-                    return;
-                }
-                resolve(true);
-            }, 'json');
-        });
-    }
-
     async createNewTransactionSubmit() {
         if (!this.createTransactionValidation()) {
             return;
@@ -75,10 +61,10 @@ class AddTransactionModel extends Component {
         if (!transactionId)
             return;
 
-        this.setState({transactionId});
+        UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, transactionId})
 
         UtilService.ShowSnackBar('Sending confirmation email');
-        let sendEmailResult = await this.sendSendCreateTransactionConfirmationEmail(transactionId);
+        let sendEmailResult = await UtilService.SendSendCreateTransactionConfirmationEmail(transactionId);
         if (!sendEmailResult){
             return;
         }
@@ -95,27 +81,10 @@ class AddTransactionModel extends Component {
         UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, show2FAModal: false})
     }
 
-    send2FARequest() {
-        let thisComponent = this;
-        return new Promise(resolve => {
-            let url  = CONFIGS.BACKEND_API_URL + `/api/confirm-transaction`;
-            let data = {
-                transaction_id: thisComponent.state.transactionId,
-                code: thisComponent.refs.code.value
-            };
-            $.post(url, data, function (response) {
-                UtilService.ShowSnackBar(response.message);
-
-                if (response.status === 0) {
-                    resolve(false);
-                    return;
-                }
-                resolve(true);
-            }, 'json');
-        });
-    }
     async twoFAModalSubmit() {
-        let sendRequestResult = await this.send2FARequest();
+        let transactionId = this.props.createTransactionState.transactionId;
+        let code = this.refs.code.value;
+        let sendRequestResult = await UtilService.Send2FARequest(transactionId, code);
         if (!sendRequestResult)
             return;
 

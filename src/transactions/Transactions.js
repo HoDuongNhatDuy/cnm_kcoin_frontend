@@ -66,7 +66,7 @@ class Transactions extends Component {
                     <div className="col-sm-7">
                         <div className="amount">{transaction.amount}</div>
                         <div className="address">
-                            {type === 'in' ? ('from ' + transaction.src_addr) : ('to ' + transaction.dst_addr)}
+                            {type === 'in' ? ('from ' + (transaction.src_addr ? transaction.src_addr : 'Blockchain')) : ('to ' + transaction.dst_addr)}
                         </div>
                     </div>
                     <div className="col-sm-2 text-right">
