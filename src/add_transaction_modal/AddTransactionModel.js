@@ -68,7 +68,7 @@ class AddTransactionModel extends Component {
         if (!sendEmailResult){
             return;
         }
-        UtilService.ShowSnackBar('An confirmation email has been sent');
+        UtilService.ShowSnackBar('A verification code has been sent to your email address.');
         this.open2FAModal();
     }
 

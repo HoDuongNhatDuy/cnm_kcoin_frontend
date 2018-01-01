@@ -24,7 +24,7 @@ class Balance extends Component {
                 <div className="">
                     <div className="col-sm-1"></div>
                     <div className="col-sm-5 text-center pointer">
-                        <div className="address">Your kcoin address: {GetAddress()}</div>
+                        <div className="address">Your KCoin address: {GetAddress()}</div>
                     </div>
                 </div>
             </div>

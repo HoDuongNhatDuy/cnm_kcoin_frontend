@@ -31,11 +31,18 @@ class Transactions extends Component {
     }
 
     async resendConfirmationEmail(transactionId) {
-        alert('this function has not implemented yet');
+        UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, transactionId})
+
+        UtilService.ShowSnackBar('Sending confirmation email');
+        let sendEmailResult = await UtilService.SendSendCreateTransactionConfirmationEmail(transactionId);
+        if (!sendEmailResult){
+            return;
+        }
+        UtilService.ShowSnackBar('A verification code has been sent to your email address.');
     }
 
     async reConfirm(transactionId) {
-        alert('this function has not implemented yet');
+        UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, show2FAModal: true});
     }
 
     renderActions(transactionId) {
