@@ -6,6 +6,7 @@ import {GetAddress} from "../AuthService";
 import CONFIGS from "../Configs";
 import $ from 'jquery'
 import UtilService from "../UtilService";
+import Timestamp from 'react-timestamp';
 
 class Transactions extends Component {
 
@@ -65,7 +66,7 @@ class Transactions extends Component {
             return (
                 <div key={'transaction-' + index} className="transaction-item">
                     <div className="col-sm-3">
-                        <div className="date">{transaction.created_at}</div>
+                        <Timestamp className="date" time={transaction.created_at} precision={2} />
                         <div className="icon">
                             <span className={type === 'in' ? 'glyphicon glyphicon-circle-arrow-down' : 'glyphicon glyphicon-circle-arrow-up'}></span>
                         </div>
