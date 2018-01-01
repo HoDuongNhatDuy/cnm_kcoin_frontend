@@ -162,14 +162,14 @@ class AddTransactionModel extends Component {
 
                 <Modal show={this.props.createTransactionState.show2FAModal} onHide={() => this.close2FAModal()}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Enter your verification code to confirm the transaction</Modal.Title>
+                        <Modal.Title className="title">Enter your verification code to confirm the transaction</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="container">
                             <form className="form-horizontal">
                                 <div className="form-group row">
-                                    <label className="control-label col-sm-1" htmlFor="code">Verification code</label>
-                                    <div className="col-sm-5">
+                                    <label className="control-label col-sm-2" htmlFor="code">Verification code</label>
+                                    <div className="col-sm-4">
                                         <input type="text" className="form-control modaltextbox" ref="code" id="code" placeholder="Code"/>
                                     </div>
                                 </div>
@@ -180,7 +180,7 @@ class AddTransactionModel extends Component {
                         <button type="button" className="btn btn-default" onClick={() => this.twoFAModalSubmit()}>
                             CONFIRM
                         </button>
-                        <Button onClick={() => this.close2FAModal()}>Close</Button>
+                        <Button onClick={() => this.close2FAModal()}>CLOSE</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

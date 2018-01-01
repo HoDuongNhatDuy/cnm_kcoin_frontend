@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
+import {ButtonGroup, Button} from 'react-bootstrap'
 import './Transactions.css';
 import {GetAddress} from "../AuthService";
 import CONFIGS from "../Configs";
@@ -40,9 +41,11 @@ class Transactions extends Component {
     renderActions(transactionId) {
         return (
             <div>
-                <button onClick={() => this.resendConfirmationEmail(transactionId)}>Resend Email</button>
-                <button onClick={() => this.reConfirm(transactionId)}>Re-confirm</button>
-                <button onClick={() => this.deleteTransaction(transactionId)}>Delete</button>
+                <ButtonGroup className="actions">
+                    <button className="actionbtn" title="Re-send confirmation email" onClick={() => this.resendConfirmationEmail(transactionId)}><span className="glyphicon glyphicon-envelope"></span></button>
+                    <button className="actionbtn" title="Confirm again" onClick={() => this.reConfirm(transactionId)}><span className="glyphicon glyphicon-repeat"></span></button>
+                    <button className="actionbtn" title="Delete transaction" onClick={() => this.deleteTransaction(transactionId)}><span className="glyphicon glyphicon glyphicon-trash"></span></button>
+                </ButtonGroup>
             </div>
         );
     }
@@ -60,13 +63,13 @@ class Transactions extends Component {
                             <span className={type === 'in' ? 'glyphicon glyphicon-circle-arrow-down' : 'glyphicon glyphicon-circle-arrow-up'}></span>
                         </div>
                     </div>
-                    <div className="col-sm-8">
+                    <div className="col-sm-7">
                         <div className="amount">{transaction.amount}</div>
                         <div className="address">
                             {type === 'in' ? ('from ' + transaction.src_addr) : ('to ' + transaction.dst_addr)}
                         </div>
                     </div>
-                    <div className="col-sm-1">
+                    <div className="col-sm-2 text-right">
                         <div className="status">{transaction.status}</div>
                         {transaction.status === 'init' ? this.renderActions(transaction._id) : null}
                     </div>
