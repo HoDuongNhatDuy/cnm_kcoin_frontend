@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {browserHistory} from 'react-router-dom'
 import {Modal, Button} from 'react-bootstrap'
 import UtilService from "../UtilService";
+import './AddTransactionModel.css';
 import $ from 'jquery'
 import CONFIGS from "../Configs";
 import {GetAddress} from "../AuthService";
@@ -128,9 +129,10 @@ class AddTransactionModel extends Component {
                 <div className="pointer button" onClick={() => this.openNewTransactionModal()}>
                     <span className="glyphicon glyphicon-plus-sign"></span> NEW TRANSACTION
                 </div>
-                <Modal show={this.props.createTransactionState.showNewTransactionModal} onHide={() => this.closeNewTransactionModal()}>
+                <Modal show={this.props.createTransactionState.showNewTransactionModal} onHide={() => this.closeNewTransactionModal()}
+                dialogClassName="modalbox" >
                     <Modal.Header closeButton>
-                        <Modal.Title>New transaction</Modal.Title>
+                        <Modal.Title className="title">New transaction</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="container">
@@ -138,37 +140,37 @@ class AddTransactionModel extends Component {
                                 <div className="form-group row">
                                     <label className="control-label col-sm-1" htmlFor="dst-address">Destination</label>
                                     <div className="col-sm-5">
-                                        <input type="text" className="form-control" ref="dst_address" id="dst-address" placeholder="Destination address"/>
+                                        <input type="text" className="form-control modaltextbox" ref="dst_address" id="dst-address" placeholder="Destination address"/>
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label className="control-label col-sm-1" htmlFor="amount">Amount</label>
                                     <div className="col-sm-5">
-                                        <input type="number" className="form-control" ref="amount" id="amount" placeholder="Amount"/>
+                                        <input type="number" className="form-control modaltextbox" ref="amount" id="amount" placeholder="Amount"/>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={() => this.closeNewTransactionModal()}>Close</Button>
+                        <Button onClick={() => this.closeNewTransactionModal()}>CANCEL</Button>
                         <button type="button" className="btn btn-default" onClick={() => this.createNewTransactionSubmit()}>
-                            Submit
+                            SUBMIT
                         </button>
                     </Modal.Footer>
                 </Modal>
 
                 <Modal show={this.props.createTransactionState.show2FAModal} onHide={() => this.close2FAModal()}>
                     <Modal.Header closeButton>
-                        <Modal.Title>2FA</Modal.Title>
+                        <Modal.Title>Enter your verification code to confirm the transaction</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="container">
                             <form className="form-horizontal">
                                 <div className="form-group row">
-                                    <label className="control-label col-sm-1" htmlFor="code">Code</label>
+                                    <label className="control-label col-sm-1" htmlFor="code">Verification code</label>
                                     <div className="col-sm-5">
-                                        <input type="text" className="form-control" ref="code" id="code" placeholder="Code"/>
+                                        <input type="text" className="form-control modaltextbox" ref="code" id="code" placeholder="Code"/>
                                     </div>
                                 </div>
                             </form>
@@ -176,7 +178,7 @@ class AddTransactionModel extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <button type="button" className="btn btn-default" onClick={() => this.twoFAModalSubmit()}>
-                            Submit
+                            CONFIRM
                         </button>
                         <Button onClick={() => this.close2FAModal()}>Close</Button>
                     </Modal.Footer>

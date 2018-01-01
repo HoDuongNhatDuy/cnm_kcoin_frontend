@@ -1,17 +1,13 @@
-.Login {
-    position: relative;
-    top: 120px;
-}
-
-.login-form {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    padding: 0px;
+.title {
+    color: #555;
+    font-weight: 300;
+    margin: 10px;
 }
 
 .control-label {
     font-size: medium;
     font-weight: 500;
+    color: #555;
 }
 
 .text-center {
@@ -24,17 +20,17 @@
     opacity: 0.2;
 }
 
-.textbox {
-    background: rgba(255, 255, 255, 0.4);
+.modaltextbox {
+    border: 1px solid #DDD;
     min-height: 40px;
-    border: 0;
 }
 
-.textbox:hover {
+.modaltextbox:hover {
     box-shadow: 0px 0px 28px -14px rgba(255,163,135,1);
 }
 
-.textbox:focus {
+.modaltextbox:focus {
+    border: 1px solid #DDD;
     box-shadow: 0px 0px 28px -6px rgba(255,136,115,1);
 }
 
@@ -59,6 +55,7 @@
     min-height: 50px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-left: 10px;
 }
 
 .btn:hover {
