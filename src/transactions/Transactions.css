@@ -13,7 +13,8 @@
 }
 
 .transaction-item .date {
-    font-size: 20px;
+    font-size: 16px;
+    margin-bottom: 20px;
 }
 
 .transaction-item .icon span {
@@ -59,7 +60,6 @@
 
 .transaction-item .address,
 .transaction-item .amount,
-.transaction-item .icon span,
-.transaction-item .date {
+.transaction-item .icon span {
     margin: 0px;
 }

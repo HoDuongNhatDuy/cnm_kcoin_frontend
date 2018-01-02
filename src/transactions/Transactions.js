@@ -66,7 +66,7 @@ class Transactions extends Component {
             return (
                 <div key={'transaction-' + index} className="transaction-item">
                     <div className="col-sm-3">
-                        <Timestamp className="date" time={transaction.created_at} precision={2} />
+                        <Timestamp className="date" time={transaction.created_at/1000} precision={2} />
                         <div className="icon">
                             <span className={type === 'in' ? 'glyphicon glyphicon-circle-arrow-down' : 'glyphicon glyphicon-circle-arrow-up'}></span>
                         </div>
