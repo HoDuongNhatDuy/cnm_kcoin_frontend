@@ -56,7 +56,8 @@ class Login extends Component {
 
                     <div className="form-group">
                         <div className="col-sm-offset-3 col-sm-8">
-                            <NavLink className="navlink" to="/register">Don't have an account? Register</NavLink>
+                            <NavLink className="navlink" to="/resetpassword">Forgot your password?</NavLink>
+                            <NavLink className="navlink" to="/register">Register new account</NavLink>
                             <button type="button" onClick={() => this.login()} className="btn btn-default">
                                 LOG IN
                             </button>
