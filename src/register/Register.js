@@ -100,7 +100,7 @@ class Register extends Component {
                     <h2 className="text-center">Register account</h2>
                     <hr className="separator"/>
                     <div className="form-group">
-                        <label className="control-label col-sm-3" htmlFor="email">Email</label>
+                        <label className="control-label col-sm-3" htmlFor="email">Email address</label>
                         <div className="col-sm-8">
                             <input type="email" className="form-control textbox" ref="email" id="email" placeholder="Enter email"/>
                         </div>
