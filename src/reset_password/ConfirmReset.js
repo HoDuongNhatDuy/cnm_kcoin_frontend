@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux'
-import {NavLink} from "react-router-dom";
 import UtilService from "../UtilService";
 import $ from 'jquery'
 import './ResetPassword.css';
+import CONFIGS from "../Configs";
 
 class ConfirmReset extends Component {
 
     validate() {
-        let email    = this.refs.email.value;
         let password = this.refs.password.value;
         let confirm  = this.refs.password_confirm.value;
 
-        if (!email || !password || !confirm){
+        if (!password || !confirm){
             UtilService.ShowSnackBar("Please fill out all the fields!");
             return false;
         }
@@ -23,6 +21,34 @@ class ConfirmReset extends Component {
         }
 
         return true;
+    }
+
+    callResetAPI(userId) {
+        return new Promise(resolve => {
+            let url = CONFIGS.BACKEND_API_URL + '/api/reset-password';
+            let data = {
+                user_id: userId,
+                password: this.refs.password.value
+            };
+            $.post(url, data, function (response) {
+                resolve(response);
+            });
+        })
+    }
+
+    async resetSubmit() {
+        let url = window.location.href;
+        let arr = url.split("/");
+        let userId =  arr[arr.length - 1];
+
+        if (!this.validate())
+            return;
+
+        let resetResult = await this.callResetAPI(userId);
+
+        UtilService.ShowSnackBar(resetResult.message);
+
+        this.props.history.push('/login');
     }
 
     render() {
@@ -46,7 +72,7 @@ class ConfirmReset extends Component {
                     </div>
                     <div className="form-group">
                         <div className="col-sm-offset-3 col-sm-8">
-                            <button type="button" className="btn btn-default">RESET PASSWORD</button>
+                            <button type="button" className="btn btn-default" onClick={() => this.resetSubmit()}>RESET PASSWORD</button>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,8 @@ import Header from "../header/Header";
 import Balance from "../balance/Balance";
 import Transactions from "../transactions/Transactions";
 import UtilService from "../UtilService";
-import {IsLoggedIn, Logout, GetEmail, GetAddress} from "../AuthService";
+import $ from 'jquery'
+import {IsLoggedIn, Logout, GetEmail, GetAddress, GetAccessToken} from "../AuthService";
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -13,8 +14,14 @@ class Dashboard extends Component {
             return;
         }
 
+        $.ajaxSetup({
+            headers:{
+                'Authorization': GetAccessToken()
+            }
+        });
+
         UtilService.UpdatePersonalData(this.props.dispatch, GetEmail(), GetAddress());
-        UtilService.UpdateDashboardData(this.props.dispatch, GetAddress());
+        UtilService.UpdateDashboardData(this.props.dispatch, this.props.history);
     }
     render() {
 

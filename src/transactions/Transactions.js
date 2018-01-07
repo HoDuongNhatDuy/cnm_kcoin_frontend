@@ -28,7 +28,7 @@ class Transactions extends Component {
         if (!this.sendDeleteTransactionRequest(transactionId))
             return;
 
-        UtilService.UpdateDashboardData(this.props.dispatch, GetAddress());
+        UtilService.UpdateDashboardData(this.props.dispatch);
     }
 
     async resendConfirmationEmail(transactionId) {
@@ -43,7 +43,7 @@ class Transactions extends Component {
     }
 
     async reConfirm(transactionId) {
-        UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, show2FAModal: true});
+        UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, transactionId, show2FAModal: true});
     }
 
     renderActions(transactionId) {

@@ -8,6 +8,7 @@ import Dashboard from "./dashboard/Dashboard";
 import Login from "./login/Login";
 import Register from "./register/Register";
 import ResetPassword from "./reset_password/ResetPassword";
+import ConfirmReset from "./reset_password/ConfirmReset";
 import AccountActiveRedirect from "./register/AccountActiveRedirect";
 
 const store = createStore(Reducer, compose(
@@ -24,7 +25,8 @@ class App extends Component {
                       <div>
                           <Route exact path="/" component={Dashboard}></Route>
                           <Route exact path="/login" component={Login}></Route>
-                          <Route exact path="/resetpassword" component={ResetPassword}></Route>
+                          <Route exact path="/reset-password" component={ResetPassword}></Route>
+                          <Route path="/reset-password-redirect" component={ConfirmReset}></Route>
                           <Route exact path="/register" component={Register}></Route>
                           <Route path="/account-activate-redirect" component={AccountActiveRedirect}></Route>
                       </div>

@@ -15,7 +15,7 @@ class AddTransactionModel extends Component {
 
     closeNewTransactionModal() {
         UtilService.UpdateCreateTransactionState(this.props.dispatch, {...this.props.createTransactionState, showNewTransactionModal: false})
-        UtilService.UpdateDashboardData(this.props.dispatch, GetAddress());
+        UtilService.UpdateDashboardData(this.props.dispatch);
 
     }
 
@@ -37,7 +37,6 @@ class AddTransactionModel extends Component {
 
             let url  = CONFIGS.BACKEND_API_URL + '/api/create-transaction';
             let data = {
-                src_addr: GetAddress(),
                 dst_arrd: dstAddress,
                 amount
             };
@@ -89,7 +88,7 @@ class AddTransactionModel extends Component {
             return;
 
         this.close2FAModal();
-        UtilService.UpdateDashboardData(this.props.dispatch, GetAddress());
+        UtilService.UpdateDashboardData(this.props.dispatch);
     }
 
     render() {

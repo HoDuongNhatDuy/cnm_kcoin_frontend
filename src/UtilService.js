@@ -1,6 +1,7 @@
 import Actions from './Actions';
 import $ from 'jquery'
 import CONFIGS from "./Configs";
+import {Logout} from "./AuthService";
 
 const ShowSnackBar = function (text, type = "normal") {
     let x       = document.getElementById("snackbar");
@@ -25,12 +26,17 @@ const GetCurrentHostURL = function () {
     return arr[0] + "//" + arr[2];
 };
 
-function sendGetDashboardDataRequest(address) {
+function sendGetDashboardDataRequest(history) {
     return new Promise(resolve => {
-        let url  = CONFIGS.BACKEND_API_URL + `/api/get-dashboard-info/${address}`;
+        let url  = CONFIGS.BACKEND_API_URL + `/api/get-dashboard-info`;
         $.get(url, function (response) {
             if (response.status === 0) {
                 ShowSnackBar(response.message);
+                resolve(false);
+                return;
+            }
+            else if (response.status === -1) {
+                Logout(history, response.message);
                 resolve(false);
                 return;
             }
@@ -39,8 +45,8 @@ function sendGetDashboardDataRequest(address) {
     });
 }
 
-const UpdateDashboardData = async function (dispatch, address) {
-    let sendRequestResult = await sendGetDashboardDataRequest(address);
+const UpdateDashboardData = async function (dispatch, history) {
+    let sendRequestResult = await sendGetDashboardDataRequest(history);
     if (!sendRequestResult)
         return;
 
