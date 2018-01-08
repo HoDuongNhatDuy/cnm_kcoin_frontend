@@ -10,6 +10,7 @@ import Register from "./register/Register";
 import ResetPassword from "./reset_password/ResetPassword";
 import ConfirmReset from "./reset_password/ConfirmReset";
 import AccountActiveRedirect from "./register/AccountActiveRedirect";
+import AdminIndex from "./admin/Index";
 
 const store = createStore(Reducer, compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -29,6 +30,7 @@ class App extends Component {
                           <Route path="/reset-password-redirect" component={ConfirmReset}></Route>
                           <Route exact path="/register" component={Register}></Route>
                           <Route path="/account-activate-redirect" component={AccountActiveRedirect}></Route>
+                          <Route path="/admin" component={AdminIndex}></Route>
                       </div>
                   </BrowserRouter>
               </div>
