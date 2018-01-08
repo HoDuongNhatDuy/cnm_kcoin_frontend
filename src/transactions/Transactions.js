@@ -70,7 +70,7 @@ class Transactions extends Component {
                         <div className="icon">
                             <span className={type === 'in' ? 'icon-incoming glyphicon glyphicon-circle-arrow-down' : 'icon-outgoing glyphicon glyphicon-circle-arrow-up'}></span>
                         </div>
-                        <div className={type === 'in' ? 'label label-info' : 'label label-danger'}>
+                        <div className={type === 'in' ? 'label label-success' : 'label label-danger'}>
                             {type === 'in' ? 'Incoming' : 'Outgoing'}
                         </div>
                     </div>
