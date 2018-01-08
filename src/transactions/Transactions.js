@@ -58,6 +58,19 @@ class Transactions extends Component {
         );
     }
 
+    formatStatusText(status) {
+        switch (status) {
+            case 'init':
+                return 'Initialized';
+            case 'pending':
+                return 'Pending';
+            case 'done':
+                return 'Complete';
+            default:
+                return 'N/A';
+        }
+    }
+
     renderTransactionList() {
         let currentArr = GetAddress();
 
@@ -68,11 +81,11 @@ class Transactions extends Component {
                     <div className="col-sm-3">
                         <Timestamp className="date" time={transaction.created_at/1000} precision={2} />
                         <div className="icon">
-                            <span className={type === 'in' ? 'icon-incoming glyphicon glyphicon-circle-arrow-down' : 'icon-outgoing glyphicon glyphicon-circle-arrow-up'}></span>
+                            <span className={type === 'in' ? 'glyphicon glyphicon-circle-arrow-down' : 'glyphicon glyphicon-circle-arrow-up'}></span>
                         </div>
-                        <div className={type === 'in' ? 'label label-success' : 'label label-danger'}>
+                        <h4><div className={type === 'in' ? 'label label-success' : 'label label-danger'}>
                             {type === 'in' ? 'Incoming' : 'Outgoing'}
-                        </div>
+                        </div></h4>
                     </div>
                     <div className="col-sm-7">
                         <div className="amount">{transaction.amount}</div>
@@ -81,7 +94,7 @@ class Transactions extends Component {
                         </div>
                     </div>
                     <div className="col-sm-2 text-right">
-                        <div className="status">{transaction.status}</div>
+                        <h4><div className="status badge badge-default">{this.formatStatusText(transaction.status)}</div></h4>
                         {transaction.status === 'init' ? this.renderActions(transaction._id) : null}
                     </div>
                 </div>

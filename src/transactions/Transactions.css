@@ -63,3 +63,11 @@
 .transaction-item .icon span {
     margin: 0px;
 }
+
+.icon-incoming {
+    box-shadow: 0px 0px 28px -6px rgb(76, 175, 80);
+}
+
+.icon-outgoing {
+    box-shadow: 0px 0px 28px -6px rgb(244, 67, 54);
+}
