@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {browserHistory} from 'react-router-dom'
 import {Modal, Button} from 'react-bootstrap'
 import UtilService from "../UtilService";
 import './AddTransactionModel.css';
 import $ from 'jquery'
 import CONFIGS from "../Configs";
-import {GetAddress} from "../AuthService";
 
 class AddTransactionModel extends Component {
     openNewTransactionModal() {

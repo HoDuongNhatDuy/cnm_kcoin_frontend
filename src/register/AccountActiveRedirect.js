@@ -4,10 +4,6 @@ import CONFIGS from "../Configs";
 import UtilService from "../UtilService";
 
 class AccountActiveRedirect extends Component {
-    constructor() {
-        super()
-    }
-
     callActivateAPI(userId) {
         return new Promise(resolve => {
             let url = CONFIGS.BACKEND_API_URL + `/api/activate/${userId}`;

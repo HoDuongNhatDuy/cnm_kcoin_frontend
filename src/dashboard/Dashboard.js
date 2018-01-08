@@ -22,6 +22,12 @@ class Dashboard extends Component {
 
         UtilService.UpdatePersonalData(this.props.dispatch, GetEmail(), GetAddress());
         UtilService.UpdateDashboardData(this.props.dispatch, this.props.history);
+
+        let thisComponent = this;
+        setInterval(function () {
+            UtilService.UpdateDashboardData(thisComponent.props.dispatch, thisComponent.props.history);
+        }, 10000);
+
     }
     render() {
 

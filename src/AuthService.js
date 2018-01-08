@@ -1,4 +1,3 @@
-import CONFIGS from './Configs';
 import UtilService from "./UtilService";
 
 export function Logout(history, message = null) {

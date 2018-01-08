@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {ButtonGroup, Button} from 'react-bootstrap'
+import {ButtonGroup} from 'react-bootstrap'
 import './Transactions.css';
 import {GetAddress} from "../AuthService";
 import CONFIGS from "../Configs";

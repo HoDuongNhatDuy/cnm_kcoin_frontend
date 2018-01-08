@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import { browserHistory } from 'react-router-dom'
 import './Header.css';
 import {Logout} from "../AuthService";
-import {Modal} from 'react-bootstrap';
 import AddTransactionModal from '../add_transaction_modal/AddTransactionModel';
 
 class Header extends Component {
