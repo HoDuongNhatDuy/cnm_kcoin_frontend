@@ -68,7 +68,10 @@ class Transactions extends Component {
                     <div className="col-sm-3">
                         <Timestamp className="date" time={transaction.created_at/1000} precision={2} />
                         <div className="icon">
-                            <span className={type === 'in' ? 'glyphicon glyphicon-circle-arrow-down' : 'glyphicon glyphicon-circle-arrow-up'}></span>
+                            <span className={type === 'in' ? 'icon-incoming glyphicon glyphicon-circle-arrow-down' : 'icon-outgoing glyphicon glyphicon-circle-arrow-up'}></span>
+                        </div>
+                        <div className={type === 'in' ? 'label label-info' : 'label label-danger'}>
+                            {type === 'in' ? 'Incoming' : 'Outgoing'}
                         </div>
                     </div>
                     <div className="col-sm-7">
