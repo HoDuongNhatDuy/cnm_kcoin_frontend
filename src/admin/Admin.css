@@ -5,41 +5,61 @@
 .table th{
     border: none !important;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3) !important;
+    padding: 20px !important;
 }
 
 .table tr td {
     border: none !important;
     padding: 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.table > tbody > tr > td > a {
+    color: white !important;
+}
+
+.table tr:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0px 0px 28px -6px rgba(255,136,115,1) !important;
 }
 
 #page-menu {
-    background: rgba(255, 255, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
     min-height: 40px !important;
-    min-width: 60px;
+    min-width: 80px;
     border-radius: 3px;
     border: none !important;
     margin-left: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#page-menu:hover {
+    background: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0px 0px 28px -14px rgba(255,163,135,1);
+}
+
+#page-menu:focus {
+    box-shadow: 0px 0px 28px -6px rgba(255,136,115,1);
 }
 
 #search-field {
-    background: rgba(255, 255, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
     min-height: 40px !important;
     border-radius: 3px;
     border: none !important;
     margin-left: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #search-field:hover {
+    background: rgba(255, 255, 255, 0.4) !important;
     box-shadow: 0px 0px 28px -14px rgba(255,163,135,1);
 }
 
 #search-field:focus {
     box-shadow: 0px 0px 28px -6px rgba(255,136,115,1);
-}
-
-.select {
-    background: rgba(255, 255, 255, 0.4) !important;
-    min-height: 40px !important;
 }
 
 .pagination li {
@@ -51,12 +71,24 @@
 }
 
 .pagination > li > a {
-    background: rgba(255, 255, 255, 0.3) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    min-height: 60px !important;
+    border: none !important;
+    line-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+
+.pagination > .active > a {
+    background: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0px 0px 28px -6px rgba(255,136,115,1);
+    color: #555;
     min-height: 60px !important;
     border: none !important;
 }
 
 .pagination > li > a:hover {
-    background: rgba(255, 255, 255, 0.6) !important;
-    box-shadow: 0px 0px 28px -14px rgba(255,163,135,1);
+    background: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0px 0px 28px -6px rgba(255,136,115,1);
 }
