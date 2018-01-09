@@ -6,8 +6,10 @@ class AdminUser extends Component {
     render() {
 
         return (
-            <div className="Dashboard">
-                Dashboard
+            <div className="col-md-12">
+                <div className="Dashboard">
+                    Dashboard
+                </div>
             </div>
         );
     }

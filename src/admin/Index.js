@@ -9,6 +9,7 @@ import AdminTransactions from "./transactions/AdminTransactions";
 import UtilService from "../UtilService";
 import $ from 'jquery'
 import {IsLoggedIn, Logout, GetEmail, GetAddress, GetAccessToken} from "../AuthService";
+import './Admin.css';
 
 class AdminIndex extends Component {
     componentDidMount() {

@@ -10,18 +10,16 @@ class AdminHeader extends Component {
         return (
             <div className="header-bar clearfix">
                 <div className="col-sm-offset-1 col-sm-4 pointer">Hello, <strong>{this.props.email}</strong></div>
-                <div className="col-sm-2">
-                    <NavLink className="navlink" to="/admin">Dashboard</NavLink>
+                <div className="col-sm-3"></div>
+                <div className="col-sm-2 text-right">
+                    <NavLink className="navlink button" to="/admin"><span className="glyphicon glyphicon-dashboard"></span></NavLink>
+                    <NavLink className="navlink button" to="/admin/users"><span className="glyphicon glyphicon-user"></span></NavLink>
+                    <NavLink className="navlink button" to="/admin/transactions"><span className="glyphicon glyphicon-transfer"></span></NavLink>
                 </div>
-                <div className="header-col col-sm-2">
-                    <NavLink className="navlink" to="/admin/users">Users</NavLink>
-                </div>
-                <div className="header-col col-sm-2">
-                    <NavLink className="navlink" to="/admin/transactions">Transactions</NavLink>
-                </div>
-                <div className="header-col col-sm-2 text-right">
+                <div className="col-sm-1 text-right">
                     <div className="pointer button" onClick={() => this.logout()}> <span className="glyphicon glyphicon-log-out"></span> LOG OUT</div>
                 </div>
+                <div className="col-sm-1"></div>
             </div>
         )
     }

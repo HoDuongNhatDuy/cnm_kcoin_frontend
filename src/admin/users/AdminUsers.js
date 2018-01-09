@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {DataTable} from 'react-data-components'
 import {NavLink} from "react-router-dom";
-
 class AdminUsers extends Component {
 
 
@@ -33,13 +32,14 @@ class AdminUsers extends Component {
             {id: 17, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
         ];
         let columns = [
-            {title: 'Email', prop: 'email', render: renderEmail},
-            {title: 'Available', prop: 'available_balance'},
-            {title: 'Actual', prop: 'actual_balance'}
+            {title: 'Email address', prop: 'email', render: renderEmail},
+            {title: 'Available balance', prop: 'available_balance'},
+            {title: 'Actual balance', prop: 'actual_balance'}
         ];
         return (
             <div className="Dashboard">
                 <DataTable
+                    className="users-table"
                     keys="id"
                     columns={columns}
                     initialData={data}
