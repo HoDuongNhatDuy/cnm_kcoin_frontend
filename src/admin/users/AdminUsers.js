@@ -2,9 +2,34 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {DataTable} from 'react-data-components'
 import {NavLink} from "react-router-dom";
+import CONFIGS from "../../Configs";
+import $ from 'jquery'
+import {GetAccessToken} from "../../AuthService";
+
 class AdminUsers extends Component {
+    constructor() {
+        super();
 
+        this.state = {
+            users: []
+        }
+    }
 
+    componentDidMount() {
+        $.ajaxSetup({
+            headers:{
+                'Authorization': GetAccessToken()
+            }
+        });
+
+        let thisComponentObj = this;
+        let url = CONFIGS.BACKEND_API_URL + '/api/admin/users';
+        $.get(url, function (response) {
+            thisComponentObj.setState({
+                users: response.data
+            });
+        });
+    }
 
     render() {
         const renderEmail = (val, row) => {
@@ -13,28 +38,11 @@ class AdminUsers extends Component {
             )
         };
 
-        let data = [
-            {id: 1, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 2, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 3, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 4, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 5, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 6, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 7, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 8, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 9, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 10, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 12, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 13, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 14, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 15, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 16, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-            {id: 17, email: 'abc@mailinator.com', available_balance: 123, actual_balance: 123 },
-        ];
         let columns = [
-            {title: 'Email address', prop: 'email', render: renderEmail},
-            {title: 'Available balance', prop: 'available_balance'},
-            {title: 'Actual balance', prop: 'actual_balance'}
+            {title: 'Email', prop: 'email', render: renderEmail},
+            {title: 'Address', prop: 'address'},
+            {title: 'Available balance', prop: 'actual'},
+            {title: 'Actual balance', prop: 'available'}
         ];
         return (
             <div className="Dashboard">
@@ -42,7 +50,7 @@ class AdminUsers extends Component {
                     className="users-table"
                     keys="id"
                     columns={columns}
-                    initialData={data}
+                    initialData={this.state.users}
                 />
             </div>
         );

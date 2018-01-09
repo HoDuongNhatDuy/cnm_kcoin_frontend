@@ -10,11 +10,20 @@ export function Logout(history, message = null) {
     history.push('/login');
 }
 
-export function SetAuthInfo(accessToken, expiredAt, email, address) {
+export function SetAuthInfo(accessToken, expiredAt, email, address, is_admin) {
     localStorage.setItem('access_token', accessToken);
     localStorage.setItem('expired_at', expiredAt);
     localStorage.setItem('email', email);
     localStorage.setItem('address', address);
+    localStorage.setItem('is_admin', is_admin);
+}
+
+/**
+ * @return {boolean}
+ */
+export function IsAdmin() {
+    return localStorage.getItem('is_admin') === "1";
+
 }
 
 export function GetAccessToken() {

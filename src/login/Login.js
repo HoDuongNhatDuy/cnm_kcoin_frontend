@@ -5,7 +5,7 @@ import './Login.css';
 import $ from 'jquery'
 import CONFIGS from "../Configs";
 import UtilService from "../UtilService";
-import { SetAuthInfo, IsLoggedIn } from "../AuthService";
+import { SetAuthInfo, IsLoggedIn, IsAdmin } from "../AuthService";
 
 class Login extends Component {
     login() {
@@ -18,8 +18,13 @@ class Login extends Component {
         };
         $.post(url, data, function (response) {
             if (response.status === 1) {
-                SetAuthInfo(response.data.access_token, response.data.expired_at, response.data.email, response.data.address);
-                thisComponentObj.props.history.push('/');
+                SetAuthInfo(response.data.access_token, response.data.expired_at, response.data.email, response.data.address, response.data.is_admin);
+
+                if (IsAdmin())
+                    thisComponentObj.props.history.push('/admin');
+                else
+                    thisComponentObj.props.history.push('/');
+
             }
             else {
                 UtilService.ShowSnackBar(response.message);

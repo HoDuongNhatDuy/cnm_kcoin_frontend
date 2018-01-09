@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import AdminHeader from "./header/AdminHeader";
 import AdminDashboard from "./dashboard/AdminDashboard";
 import AdminUsers from "./users/AdminUsers";
@@ -8,7 +8,7 @@ import AdminUserTransaction from "./user_transactions/AdminUserTransactions";
 import AdminTransactions from "./transactions/AdminTransactions";
 import UtilService from "../UtilService";
 import $ from 'jquery'
-import {IsLoggedIn, Logout, GetEmail, GetAddress, GetAccessToken} from "../AuthService";
+import {IsLoggedIn, Logout, GetEmail, GetAddress, GetAccessToken, IsAdmin} from "../AuthService";
 import './Admin.css';
 
 class AdminIndex extends Component {
@@ -16,6 +16,10 @@ class AdminIndex extends Component {
         if (!IsLoggedIn()) {
             Logout(this.props.history);
             return;
+        }
+        if (!IsAdmin()) {
+            UtilService.ShowSnackBar("Access is denied!");
+            this.props.history.push('/');
         }
 
         $.ajaxSetup({

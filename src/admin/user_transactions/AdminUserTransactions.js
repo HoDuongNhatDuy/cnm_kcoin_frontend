@@ -1,43 +1,62 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {DataTable} from 'react-data-components'
+import CONFIGS from "../../Configs";
+import $ from "jquery";
+import {GetAccessToken} from "../../AuthService";
+import  "./AdminUserTransactions.css";
 
 class AdminUserTransactions extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            transactions: [],
+            user: {}
+        }
+    }
+
+    componentDidMount() {
+        $.ajaxSetup({
+            headers:{
+                'Authorization': GetAccessToken()
+            }
+        });
+
+        let userId = this.props.match.params.id;
+        let thisComponentObj = this;
+        let url = CONFIGS.BACKEND_API_URL + `/api/admin/users/${userId}/`;
+        $.get(url, function (response) {
+            thisComponentObj.setState({
+                transactions: response.data.transactions,
+                user: response.data.user
+            });
+        });
+    }
+
     render() {
-        let data = [
-            {id: 1, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 2, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 3, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 4, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 5, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 6, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 7, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 8, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 9, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 10, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 11, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 12, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 13, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 14, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 16, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 17, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 18, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 19, from: 'abc', to: 'me', amount: 123, status: 'free'},
-            {id: 20, from: 'abc', to: 'me', amount: 123, status: 'free'},
-        ];
+        const renderAddress = (value, row) => {
+            return (
+                <div title={value} className={value === this.state.user.address ? 'current-address' : ''}>
+                    {(value.length > 10) ? (value.substr(0, 15) + '...' + value.substr(value.length - 15)): value}
+                </div>
+            );
+        };
+
         let columns = [
-            {title: 'From', prop: 'from'},
-            {title: 'To', prop: 'to'},
+            {title: 'From', prop: 'src_addr', render: renderAddress},
+            {title: 'To', prop: 'dst_addr', render: renderAddress},
             {title: 'Amount', prop: 'amount'},
             {title: 'Status', prop: 'status'},
         ];
         return (
             <div className="Dashboard">
-                <h1>User email</h1>
+                <h4>{this.state.user.email}</h4>
+                <h5>{this.state.user.address}</h5>
                 <DataTable
-                    keys="id"
+                    keys="_id"
                     columns={columns}
-                    initialData={data}
+                    initialData={this.state.transactions}
                 />
             </div>
         );

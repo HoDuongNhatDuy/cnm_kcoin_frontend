@@ -1,34 +1,47 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {DataTable} from 'react-data-components'
+import $ from "jquery";
+import CONFIGS from "../../Configs";
+import {GetAccessToken} from "../../AuthService";
 
 class AdminTransactions extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            transactions: [],
+        }
+    }
+
+    componentDidMount() {
+        $.ajaxSetup({
+            headers:{
+                'Authorization': GetAccessToken()
+            }
+        });
+
+        let thisComponentObj = this;
+        let url = CONFIGS.BACKEND_API_URL + `/api/admin/transactions`;
+        $.get(url, function (response) {
+            thisComponentObj.setState({
+                transactions: response.data,
+            });
+        });
+    }
+
+
+
     render() {
-        let data = [
-            {id: 1, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 2, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 3, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 4, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 5, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 6, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 7, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 8, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 9, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 10, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 11, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 12, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 13, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 14, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 15, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 16, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 17, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 18, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 19, source: 'xxx', index: 1, amount: 123, status: 'free'},
-            {id: 20, source: 'xxx', index: 1, amount: 123, status: 'free'},
-        ];
+        const renderHash = (value, row) => {
+            return value.length > 10 ? (value.substr(0, 15) + '...' + value.substr(value.length - 15)): value;
+        };
+
         let columns = [
-            {title: 'Source', prop: 'source'},
+            {title: 'Source', prop: 'hash', render: renderHash},
             {title: 'Index', prop: 'index'},
+            {title: 'Destination Address', prop: 'dst_addr', render: renderHash},
+            {title: 'Destination Email', prop: 'dst_email'},
             {title: 'Amount', prop: 'amount'},
             {title: 'Status', prop: 'status'},
         ];
@@ -37,7 +50,7 @@ class AdminTransactions extends Component {
                 <DataTable
                     keys="id"
                     columns={columns}
-                    initialData={data}
+                    initialData={this.state.transactions}
                 />
             </div>
         );
