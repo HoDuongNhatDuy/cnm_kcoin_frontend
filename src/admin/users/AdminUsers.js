@@ -41,8 +41,8 @@ class AdminUsers extends Component {
         let columns = [
             {title: 'Email', prop: 'email', render: renderEmail},
             {title: 'Address', prop: 'address'},
-            {title: 'Available balance', prop: 'actual'},
-            {title: 'Actual balance', prop: 'available'}
+            {title: 'Available', prop: 'actual'},
+            {title: 'Actual', prop: 'available'}
         ];
         return (
             <div className="Dashboard">
