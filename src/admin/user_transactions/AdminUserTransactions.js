@@ -54,7 +54,7 @@ class AdminUserTransactions extends Component {
                 <h4>{this.state.user.email}</h4>
                 <h5>{this.state.user.address}</h5>
                 <DataTable
-                    keys="_id"
+                    keys="id"
                     columns={columns}
                     initialData={this.state.transactions}
                 />

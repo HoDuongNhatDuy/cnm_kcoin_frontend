@@ -16,10 +16,9 @@ class AdminHeader extends Component {
                     <NavLink className="navlink button" to="/admin/users"><span className="glyphicon glyphicon-user"></span></NavLink>
                     <NavLink className="navlink button" to="/admin/transactions"><span className="glyphicon glyphicon-transfer"></span></NavLink>
                 </div>
-                <div className="col-sm-1 text-right">
+                <div className="col-sm-2 text-left">
                     <div className="pointer button" onClick={() => this.logout()}> <span className="glyphicon glyphicon-log-out"></span> LOG OUT</div>
                 </div>
-                <div className="col-sm-1"></div>
             </div>
         )
     }
