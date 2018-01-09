@@ -27,13 +27,22 @@
     box-shadow: 0px 0px 28px -6px rgba(255,136,115,1) !important;
 }
 
+.Dashboard > .container > .row > .col-xs-4 {
+    margin-top: 30px !important;
+}
+
+.col-xs-4 > div {
+    display: inline-block !important;
+    margin-right: 20px;
+}
+
 #page-menu {
     background: rgba(255, 255, 255, 0.3) !important;
     min-height: 40px !important;
-    min-width: 80px;
+    min-width: 70px;
     border-radius: 3px;
     border: none !important;
-    margin-left: 22px;
+    margin-left: 20px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -52,7 +61,7 @@
     min-height: 40px !important;
     border-radius: 3px;
     border: none !important;
-    margin-left: 40px;
+    margin-left: 20px;
     padding-left: 10px;
     padding-right: 10px;
 }
