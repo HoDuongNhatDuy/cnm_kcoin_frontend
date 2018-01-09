@@ -20,6 +20,7 @@ class AdminIndex extends Component {
         if (!IsAdmin()) {
             UtilService.ShowSnackBar("Access is denied!");
             this.props.history.push('/');
+            return;
         }
 
         $.ajaxSetup({
@@ -38,8 +39,9 @@ class AdminIndex extends Component {
 
     }
     render() {
-
-        return (
+        if (!IsAdmin())
+            return null;
+        else return (
             <div className="Dashboard">
                 <AdminHeader type="dashboard" history={this.props.history}></AdminHeader>
                 <div>
