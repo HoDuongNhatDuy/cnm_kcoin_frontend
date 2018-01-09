@@ -16,6 +16,7 @@
     border: none !important;
     padding: 20px !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .table > tbody > tr > td > a {
