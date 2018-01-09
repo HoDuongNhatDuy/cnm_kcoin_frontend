@@ -9,7 +9,7 @@ class AdminHeader extends Component {
     renderDashboardHeader() {
         return (
             <div className="header-bar clearfix">
-                <div className="col-sm-offset-1 col-sm-4 pointer">Hello, <strong>{this.props.email}</strong></div>
+                <div className="col-sm-offset-1 col-sm-4 pointer">Welcome, administrator <strong>{this.props.email}</strong></div>
                 <div className="col-sm-3"></div>
                 <div className="col-sm-2 text-right">
                     <NavLink className="navlink button" to="/admin"><span className="glyphicon glyphicon-dashboard"></span></NavLink>

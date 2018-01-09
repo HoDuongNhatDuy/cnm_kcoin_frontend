@@ -1,3 +1,7 @@
+.container {
+    width: 90% !important;
+}
+
 .table {
     border: none !important;
 }

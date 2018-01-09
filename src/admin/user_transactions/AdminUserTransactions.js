@@ -37,8 +37,13 @@ class AdminUserTransactions extends Component {
     render() {
         const renderAddress = (value, row) => {
             return (
-                <div title={value} className={value === this.state.user.address ? 'current-address' : ''}>
-                    {(value.length > 10) ? (value.substr(0, 15) + '...' + value.substr(value.length - 15)): value}
+                <div>
+                    <div className="col-md-2"></div>
+                    <div className="col-md-8">
+                        <div title={value} className={value === this.state.user.address ? 'current-address' : ''}>
+                            {(value.length > 10) ? (value.substr(0, 15) + '...' + value.substr(value.length - 15)): value}
+                        </div>
+                    </div>
                 </div>
             );
         };
@@ -51,13 +56,17 @@ class AdminUserTransactions extends Component {
         ];
         return (
             <div className="Dashboard">
-                <h4>{this.state.user.email}</h4>
-                <h5>{this.state.user.address}</h5>
-                <DataTable
-                    keys="id"
-                    columns={columns}
-                    initialData={this.state.transactions}
-                />
+                <div className="userinfo row text-center">
+                    <h3>{this.state.user.email}</h3>
+                    <h5 className="useraddress">{this.state.user.address}</h5>
+                </div>
+                <div className="row">
+                    <DataTable
+                        keys="id"
+                        columns={columns}
+                        initialData={this.state.transactions}
+                    />
+                </div>
             </div>
         );
     }
