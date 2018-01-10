@@ -104,14 +104,14 @@ class AddTransactionModel extends Component {
                         <div className="container">
                             <form className="form-horizontal">
                                 <div className="form-group row">
-                                    <label className="control-label col-sm-1" htmlFor="dst-address">Destination</label>
-                                    <div className="col-sm-5">
+                                    <label className="control-label col-sm-2" htmlFor="dst-address">Destination</label>
+                                    <div className="col-sm-10">
                                         <input type="text" className="form-control modaltextbox" ref="dst_address" id="dst-address" placeholder="Destination address"/>
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <label className="control-label col-sm-1" htmlFor="amount">Amount</label>
-                                    <div className="col-sm-5">
+                                    <label className="control-label col-sm-2" htmlFor="amount">Amount</label>
+                                    <div className="col-sm-10">
                                         <input type="number" className="form-control modaltextbox" ref="amount" id="amount" placeholder="Amount"/>
                                     </div>
                                 </div>
@@ -134,8 +134,8 @@ class AddTransactionModel extends Component {
                         <div className="container">
                             <form className="form-horizontal">
                                 <div className="form-group row">
-                                    <label className="control-label col-sm-2" htmlFor="code">Verification code</label>
-                                    <div className="col-sm-4">
+                                    <label className="control-label col-sm-4" htmlFor="code">Verification code</label>
+                                    <div className="col-sm-8">
                                         <input type="text" className="form-control modaltextbox" ref="code" id="code" placeholder="Code"/>
                                     </div>
                                 </div>
