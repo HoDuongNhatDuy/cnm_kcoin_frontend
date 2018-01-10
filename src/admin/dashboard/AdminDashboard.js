@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import $ from "jquery";
 import CONFIGS from "../../Configs";
 import {GetAccessToken} from "../../AuthService";
+import UtilService from "../../UtilService";
 
 class AdminUser extends Component {
     constructor() {
@@ -24,10 +25,15 @@ class AdminUser extends Component {
         let thisComponentObj = this;
         let url = CONFIGS.BACKEND_API_URL + `/api/admin/balances`;
         $.get(url, function (response) {
-            thisComponentObj.setState({
-                actual: response.data.actual,
-                available: response.data.available
-            });
+            if (response.status === 1) {
+                thisComponentObj.setState({
+                    actual: response.data.actual,
+                    available: response.data.available
+                });
+            }
+            else {
+                UtilService.ShowSnackBar(response.message);
+            }
         });
     }
 

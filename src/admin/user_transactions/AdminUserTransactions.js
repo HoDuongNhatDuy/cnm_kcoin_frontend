@@ -5,6 +5,7 @@ import CONFIGS from "../../Configs";
 import $ from "jquery";
 import {GetAccessToken} from "../../AuthService";
 import  "./AdminUserTransactions.css";
+import UtilService from "../../UtilService";
 
 class AdminUserTransactions extends Component {
     constructor() {
@@ -27,10 +28,15 @@ class AdminUserTransactions extends Component {
         let thisComponentObj = this;
         let url = CONFIGS.BACKEND_API_URL + `/api/admin/users/${userId}/`;
         $.get(url, function (response) {
-            thisComponentObj.setState({
-                transactions: response.data.transactions,
-                user: response.data.user
-            });
+            if (response.status === 1) {
+                thisComponentObj.setState({
+                    transactions: response.data.transactions,
+                    user: response.data.user
+                });
+            }
+            else {
+                UtilService.ShowSnackBar(response.message);
+            }
         });
     }
 
@@ -62,7 +68,7 @@ class AdminUserTransactions extends Component {
                 </div>
                 <div className="row">
                     <DataTable
-                        keys="id"
+                        keys="_id"
                         columns={columns}
                         initialData={this.state.transactions}
                     />

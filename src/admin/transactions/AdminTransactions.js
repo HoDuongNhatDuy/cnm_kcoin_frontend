@@ -4,6 +4,7 @@ import {DataTable} from 'react-data-components'
 import $ from "jquery";
 import CONFIGS from "../../Configs";
 import {GetAccessToken} from "../../AuthService";
+import UtilService from "../../UtilService";
 
 class AdminTransactions extends Component {
     constructor() {
@@ -24,9 +25,14 @@ class AdminTransactions extends Component {
         let thisComponentObj = this;
         let url = CONFIGS.BACKEND_API_URL + `/api/admin/transactions`;
         $.get(url, function (response) {
-            thisComponentObj.setState({
-                transactions: response.data,
-            });
+            if (response.status === 1) {
+                thisComponentObj.setState({
+                    transactions: response.data,
+                });
+            }
+            else {
+                UtilService.ShowSnackBar(response.message);
+            }
         });
     }
 

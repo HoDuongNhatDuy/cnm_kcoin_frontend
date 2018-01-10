@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import CONFIGS from "../../Configs";
 import $ from 'jquery'
 import {GetAccessToken} from "../../AuthService";
+import UtilService from "../../UtilService";
 
 class AdminUsers extends Component {
     constructor() {
@@ -25,9 +26,14 @@ class AdminUsers extends Component {
         let thisComponentObj = this;
         let url = CONFIGS.BACKEND_API_URL + '/api/admin/users';
         $.get(url, function (response) {
-            thisComponentObj.setState({
-                users: response.data
-            });
+            if (response.status === 1) {
+                thisComponentObj.setState({
+                    users: response.data
+                });
+            }
+            else {
+                UtilService.ShowSnackBar(response.message);
+            }
         });
     }
 
